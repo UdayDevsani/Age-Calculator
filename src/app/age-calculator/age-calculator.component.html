@@ -1,0 +1,32 @@
+<div class="age-calculator">
+    <h2>Age Calculator</h2>
+  
+    <form [formGroup]="ageCalculatorForm" (submit)="calculateAge()">
+      <div class="form-group required">
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" formControlName="dob" class="form-control" />
+        <div class="invalid-feedback" style="color: red;" *ngIf="ageCalculatorForm.get('dob')?.invalid && ageCalculatorForm.get('dob')?.touched">
+            Date of Birth is required.
+          </div>          
+      </div>
+
+      <div>&nbsp;</div>
+  
+      <div class="form-group required">
+        <label for="cdate">Current Date:</label>
+        <input type="date" id="cdate" formControlName="cdate" class="form-control" />
+        <div class="invalid-feedback" style="color: red;" *ngIf="ageCalculatorForm.get('cdate')?.invalid && ageCalculatorForm.get('cdate')?.touched">
+          Current Date is required.
+        </div>
+      </div>
+
+      <div>&nbsp;</div>
+  
+      <button type="submit" class="btn btn-primary">Calculate Age</button>
+    </form>
+  
+    <div *ngIf="age !== null" class="result">
+      <p>Your age is {{ age }} years.</p>
+    </div>
+  </div>
+  
